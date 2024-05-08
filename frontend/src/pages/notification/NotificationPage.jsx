@@ -15,7 +15,7 @@ const NotificationPage = () => {
     queryKey: ["notifications"],
     queryFn: async () => {
       try {
-        const res = await fetch(getApiUrl("notifications"));
+        const res = await fetch(getApiUrl("api/notifications"));
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || "something went wrong");
         return data;
@@ -28,7 +28,7 @@ const NotificationPage = () => {
   const { mutate: deleteNotifications } = useMutation({
     mutationFn: async () => {
       try {
-        const res = await fetch(getApiUrl("notifications"), {
+        const res = await fetch(getApiUrl("api/notifications"), {
           method: "DELETE",
         });
         const data = await res.json();

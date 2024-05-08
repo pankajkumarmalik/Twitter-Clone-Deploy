@@ -27,7 +27,7 @@ const Post = ({ post }) => {
   const { mutate: deletePost, isPending: isDeleting } = useMutation({
     mutationFn: async () => {
       try {
-        const res = await fetch(getApiUrl(`/posts/${post._id}`), {
+        const res = await fetch(getApiUrl(`api/posts/${post._id}`), {
           method: "DELETE",
         });
 
@@ -49,7 +49,7 @@ const Post = ({ post }) => {
   const { mutate: likePost, isPending: isLiking } = useMutation({
     mutationFn: async () => {
       try {
-        const res = await fetch(getApiUrl(`/api/posts/like/${post._id}`), {
+        const res = await fetch(getApiUrl(`api/posts/like/${post._id}`), {
           method: "POST",
         });
 
@@ -85,7 +85,7 @@ const Post = ({ post }) => {
   const { mutate: commentPost, isPending: isCommenting } = useMutation({
     mutationFn: async () => {
       try {
-        const res = await fetch(`/api/posts/comment/${post._id}`, {
+        const res = await fetch(getApiUrl(`api/posts/comment/${post._id}`), {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
