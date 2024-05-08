@@ -9,6 +9,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import LoadingSpinner from "./LoadingSpinner";
 import { formatPostDate } from "../../utils/date";
+import { getApiUrl } from "../../utils/api/api.js";
 
 const Post = ({ post }) => {
   const [comment, setComment] = useState("");
@@ -26,7 +27,7 @@ const Post = ({ post }) => {
   const { mutate: deletePost, isPending: isDeleting } = useMutation({
     mutationFn: async () => {
       try {
-        const res = await fetch(`/api/posts/${post._id}`, {
+        const res = await fetch(getApiUrl(`/posts/${post._id}`), {
           method: "DELETE",
         });
 
@@ -48,7 +49,7 @@ const Post = ({ post }) => {
   const { mutate: likePost, isPending: isLiking } = useMutation({
     mutationFn: async () => {
       try {
-        const res = await fetch(`/api/posts/like/${post._id}`, {
+        const res = await fetch(getApiUrl(`/api/posts/like/${post._id}`), {
           method: "POST",
         });
 
