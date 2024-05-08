@@ -30,7 +30,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "https://twitterdeploy.netlify.app/", // Replace with your frontend URL
+    origin: "https://twitterdeploy.netlify.app", // Replace with your frontend URL
   })
 );
 
